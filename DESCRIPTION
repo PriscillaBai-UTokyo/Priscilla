@@ -1,0 +1,13 @@
+Package: Priscilla
+Type: Package
+Title: Priscilla
+Version: 0.1.0
+Author: Yunfan Bai
+Maintainer: Yunfan Bai <yunfanbai51@gmail.com>
+Description: 
+    I don't want to waste my time in repeating works, 
+    this is the reason the package exists. 
+License: 
+Imports: cowplot, preprocessCore
+Encoding: UTF-8
+LazyData: true

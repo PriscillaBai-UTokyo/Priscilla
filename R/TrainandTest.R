@@ -1,0 +1,9 @@
+TrainandTest<-function(data,group,p=0.25){
+  library(caret)
+  data<-as.data.frame(data)
+  inTrain<-createDataPartition(y=group,p=p,list=F)
+  test<-data[inTrain,]
+  train<-data[-inTrain,]
+  dataset<-list('train'=train,'test'=test)
+  return(dataset)
+}
