@@ -14,7 +14,7 @@ mylasso <- function(data,OStime,OS){
   pdf("lasso_plot1.pdf")
   plot(cvfit)
   dev.off()
-  return(cvfit$lambda.min)
+  print(cvfit$lambda.min)
   fit <- glmnet(data, Surv(OStime,OS),family = "cox")
 
   pdf("lasso_plot2.pdf")
