@@ -10,6 +10,7 @@ OStime: survival time (days or month)
 OS: survival or not
 }
 \examples{
+load("mylasso")
 combine = mylasso(input,OStime,Status)
 }
 

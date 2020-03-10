@@ -22,10 +22,12 @@ mylasso <- function(data,OStime,OS){
   dev.off()
 
   coef.min = coef(cvfit, s = "lambda.min")
-  active.min = which(coef.min != 0)
-  index.min = coef.min[active.min]
-  geneids <- colnames(data)[active.min]
-  combine <- cbind(geneids, index.min)
-  write.csv(combine,"gene_index.csv")
-  return(combine)
+  active.min = which(coef.min[,1] != 0)
+  if(length(active.min)!=0){
+    index.min = coef.min[active.min]
+    geneids <- colnames(data)[active.min]
+    combine <- cbind(geneids, index.min)
+    write.csv(combine,"gene_index.csv")
+    return(combine)
+  }else{warning("No target gene been lassoed!")}
 }
