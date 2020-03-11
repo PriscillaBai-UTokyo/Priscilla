@@ -1,7 +1,7 @@
-multi_cox = function(data,ynames){
+multi_cox = function(data,ynames,OStime,OS){
   library(survival)
   form<-as.formula(paste0('sur2~',paste0(ynames,collapse = '+')))
-  sur2<-Surv(time=data$OStime,event = data$OS)
+  sur2<-Surv(time=OStime,event = OS)
   multicox<-coxph(formula = form,data = data)#数据集需要更改
   multisum<-summary(multicox)##汇总
   muHR<-round(multisum$coefficients[,2],3)#风险比
