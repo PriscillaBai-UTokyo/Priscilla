@@ -7,7 +7,6 @@ Uni_cox <- function(input,ynames,OStime,Status){
   library(viridis)
   library(scales)
 
-  input = factor2num(input)
   Coxoutput=data.frame()
   for(i in ynames){
     cox <- coxph(Surv(OStime, Status) ~ input[,i], data = input)
