@@ -1,7 +1,9 @@
-multi_cox = function(data,ynames,OStime,OS){
+multiCox = function(data,ynames,OStime,OS,i=1,j=dim(data)[2]){
   library(survival)
   form<-as.formula(paste0('sur2~',paste0(ynames,collapse = '+')))
   sur2<-Surv(time=OStime,event = OS)
+
+  data = factor2num(data,i,j)
   multicox<-coxph(formula = form,data = data)#数据集需要更改
   multisum<-summary(multicox)##汇总
   muHR<-round(multisum$coefficients[,2],3)#风险比
@@ -17,6 +19,6 @@ multi_cox = function(data,ynames,OStime,OS){
   multicox2$`HR(95%CI)`<-paste0(multicox2$muHazard.Ration,'(',multicox2$muCI95,')')
   multicox2<-dplyr::select(multicox2,characteristics,`HR(95%CI)`,mupvalue,-muCI95,-muHazard.Ration)
   write.csv(multicox2,'multicox.csv')
-
+  print(multicox2)
   return(multicox2)
 }
