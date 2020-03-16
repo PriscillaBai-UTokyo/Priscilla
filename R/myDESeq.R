@@ -1,4 +1,4 @@
-DESeq_Pris<-function(data,group){
+myDESeq<-function(data,group){
   library(DESeq2)
   ##将基因名和样本名做成一个列表
   dimnames=list(rownames(data),colnames(data))
@@ -14,6 +14,5 @@ DESeq_Pris<-function(data,group){
 
   #library(dplyr)
   res<-cbind(rownames(res),res)
-  res1<-res %>% dplyr::filter((log2FoldChange>1 | log2FoldChange < (-1)) & padj < 0.05)
-  return(res1)
+  return(res)
 }
